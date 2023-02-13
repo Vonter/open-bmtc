@@ -19,6 +19,10 @@ Base URLs:
 
 [Get points along path followed by given route ID](#get-points-along-path-followed-by-given-route-id)
 
+[Search for station by name](#search-for-station-by-name)
+
+[Get details of route by routeid](#get-details-of-route-by-routeid)
+
 [Get emergency message](#get-emergency-message)
 
 [Find places around bus stops](#find-places-around-bus-stops)
@@ -591,14 +595,13 @@ Base URLs:
 
 ## Get points along path followed by given route ID
 
-`POST /GetPathDetails`
+`POST /RoutePoints`
 
 > Body parameter
 
 ```json
 {
-  "routeid": 0,
-  "example": null
+  "routeid": 0
 }
 ```
 
@@ -608,7 +611,6 @@ Base URLs:
 |---|---|---|---|---|
 |body|body|object|false|none|
 |» routeid|body|number|false|none|
-|» example|body|any|false|none|
 
 > 200 Response
 
@@ -671,6 +673,500 @@ Base URLs:
       "responsecode": 200
     }
   ]
+}
+```
+
+## Search for station by name
+
+`POST /SearchStation`
+
+> Body parameter
+
+```json
+{
+  "stationName": "string"
+}
+```
+
+<h3 id="search-for-station-by-name-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» stationName|body|string|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "union_rowno": 4,
+      "row": 1,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 20817,
+      "geofencename": "Hebbala (Towards Hebbala Last Stop 279E)",
+      "center_lat": 13.04135,
+      "center_lon": 77.58885,
+      "towards": "Hebbala Last Stop 279E",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 2,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 25816,
+      "geofencename": "Hebbala (Towards Mekhri Circle)",
+      "center_lat": 13.03884,
+      "center_lon": 77.58947,
+      "towards": "Mekhri Circle",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 3,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 20820,
+      "geofencename": "Hebbala (Towards Yalahanka)",
+      "center_lat": 13.03828,
+      "center_lon": 77.58917,
+      "towards": "Yalahanka",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 4,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 21527,
+      "geofencename": "Hebbala Bridge (Towards BEL Circle)",
+      "center_lat": 13.0427,
+      "center_lon": 77.58944,
+      "towards": "BEL Circle",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 5,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 20822,
+      "geofencename": "Hebbala Bridge (Towards Nagavara)",
+      "center_lat": 13.04218,
+      "center_lon": 77.59387,
+      "towards": "Nagavara",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 6,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 20823,
+      "geofencename": "Hebbala Bridge (Towards Tin Factory)",
+      "center_lat": 13.04293,
+      "center_lon": 77.59122,
+      "towards": "Tin Factory",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 7,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 25819,
+      "geofencename": "Hebbala Bridge (Towards Yalahanka)",
+      "center_lat": 13.04328,
+      "center_lon": 77.59036,
+      "towards": "Yalahanka",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 5,
+      "row": 1,
+      "stopname": "14ನೇ ಮೈನ್ ಎಚ್ಎಸ್ಆರ್ ಲೇಔಟ್",
+      "stopid": 20568,
+      "geofencename": "14th Main HSR Layout (Towards Hebbala)",
+      "center_lat": 12.91644,
+      "center_lon": 77.63458,
+      "towards": "Hebbala",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 5,
+      "row": 2,
+      "stopname": "80 ಅಡಿ ರೋಡ್ ಕಲ್ಯಾಣನಗರ",
+      "stopid": 21450,
+      "geofencename": "80ft Road Kalyananagara (Towards Hebbala)",
+      "center_lat": 13.02546,
+      "center_lon": 77.64042,
+      "towards": "Hebbala",
+      "responsecode": 200
+    }
+  ],
+  "Message": "Success",
+  "Issuccess": true,
+  "exception": null,
+  "RowCount": 97,
+  "responsecode": 200
+}
+```
+
+## Get details of route by routeid
+
+`POST /SearchByRouteDetails_v2`
+
+> Body parameter
+
+```json
+{
+  "routeid": 0,
+  "servicetypeid": 0
+}
+```
+
+<h3 id="get-details-of-route-by-routeid-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» routeid|body|number|false|none|
+|» servicetypeid|body|number|false|none|
+
+> 200 Response
+
+```json
+{
+  "up": {
+    "data": [
+      {
+        "routeid": 3804,
+        "stationid": 34431,
+        "stationname": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "from": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "to": "ಕೆಂಪೇಗೌಡ ಅಂತರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+        "routeno": "KIA-14",
+        "distance_on_station": 0,
+        "centerlat": 12.87646,
+        "centerlong": 77.59502,
+        "responsecode": 200,
+        "isnotify": 0,
+        "vehicleDetails": [
+          {
+            "vehicleid": 19979,
+            "vehiclenumber": "KA57F1802",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 13.02217,
+            "centerlong": 77.584381,
+            "eta": "",
+            "sch_arrivaltime": "11:00",
+            "sch_departuretime": "11:00",
+            "actual_arrivaltime": "11:00",
+            "actual_departuretime": "11:00",
+            "sch_tripstarttime": "11:00",
+            "sch_tripendtime": "11:00",
+            "lastlocationid": 21130,
+            "currentlocationid": 21076,
+            "nextlocationid": 21019,
+            "currentstop": "",
+            "nextstop": "Mekhri Circle (Towards Hebbala)",
+            "laststop": "Palace Ground (Towards Mekhri Circle)",
+            "stopCoveredStatus": 1,
+            "heading": 21,
+            "lastrefreshon": "13-02-2023 11:57:47",
+            "lastreceiveddatetimeflag": 0
+          },
+          {
+            "vehicleid": 21575,
+            "vehiclenumber": "KA57F2403",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 12.966782,
+            "centerlong": 77.587914,
+            "eta": "",
+            "sch_arrivaltime": "10:15",
+            "sch_departuretime": "10:15",
+            "actual_arrivaltime": "11:12",
+            "actual_departuretime": "11:12",
+            "sch_tripstarttime": "10:15",
+            "sch_tripendtime": "10:15",
+            "lastlocationid": 36131,
+            "currentlocationid": 22667,
+            "nextlocationid": 20725,
+            "currentstop": "",
+            "nextstop": "Corporation (Towards Cauvery Bhavan / Mysore Bank)",
+            "laststop": "Pallavi Talkies (Towards Kempegowda Bus Station)",
+            "stopCoveredStatus": 1,
+            "heading": 214,
+            "lastrefreshon": "13-02-2023 11:57:44",
+            "lastreceiveddatetimeflag": 0
+          }
+        ]
+      },
+      {
+        "routeid": 3804,
+        "stationid": 22763,
+        "stationname": "ಹುಳಿಮಾವು ಗೇಟ್",
+        "from": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "to": "ಕೆಂಪೇಗೌಡ ಅಂತರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+        "routeno": "KIA-14",
+        "distance_on_station": 0.575,
+        "centerlat": 12.88163,
+        "centerlong": 77.59589,
+        "responsecode": 200,
+        "isnotify": 0,
+        "vehicleDetails": [
+          {
+            "vehicleid": 19979,
+            "vehiclenumber": "KA57F1802",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 13.02217,
+            "centerlong": 77.584381,
+            "eta": "",
+            "sch_arrivaltime": "11:01",
+            "sch_departuretime": "11:01",
+            "actual_arrivaltime": "11:01",
+            "actual_departuretime": "11:02",
+            "sch_tripstarttime": "11:00",
+            "sch_tripendtime": "11:00",
+            "lastlocationid": 21130,
+            "currentlocationid": 21076,
+            "nextlocationid": 21019,
+            "currentstop": "",
+            "nextstop": "Mekhri Circle (Towards Hebbala)",
+            "laststop": "Palace Ground (Towards Mekhri Circle)",
+            "stopCoveredStatus": 1,
+            "heading": 21,
+            "lastrefreshon": "13-02-2023 11:57:47",
+            "lastreceiveddatetimeflag": 0
+          },
+          {
+            "vehicleid": 21575,
+            "vehiclenumber": "KA57F2403",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 12.966782,
+            "centerlong": 77.587914,
+            "eta": "",
+            "sch_arrivaltime": "10:16",
+            "sch_departuretime": "10:16",
+            "actual_arrivaltime": "11:13",
+            "actual_departuretime": "11:13",
+            "sch_tripstarttime": "10:15",
+            "sch_tripendtime": "10:15",
+            "lastlocationid": 36131,
+            "currentlocationid": 22667,
+            "nextlocationid": 20725,
+            "currentstop": "",
+            "nextstop": "Corporation (Towards Cauvery Bhavan / Mysore Bank)",
+            "laststop": "Pallavi Talkies (Towards Kempegowda Bus Station)",
+            "stopCoveredStatus": 1,
+            "heading": 214,
+            "lastrefreshon": "13-02-2023 11:57:44",
+            "lastreceiveddatetimeflag": 0
+          }
+        ]
+      },
+      {
+        "routeid": 3804,
+        "stationid": 35232,
+        "stationname": "ಬಿಪಿಎಲ್",
+        "from": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "to": "ಕೆಂಪೇಗೌಡ ಅಂತರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+        "routeno": "KIA-14",
+        "distance_on_station": 1.16,
+        "centerlat": 12.88691,
+        "centerlong": 77.59676,
+        "responsecode": 200,
+        "isnotify": 0,
+        "vehicleDetails": [
+          {
+            "vehicleid": 19979,
+            "vehiclenumber": "KA57F1802",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 13.02217,
+            "centerlong": 77.584381,
+            "eta": "",
+            "sch_arrivaltime": "11:02",
+            "sch_departuretime": "11:02",
+            "actual_arrivaltime": "11:03",
+            "actual_departuretime": "11:03",
+            "sch_tripstarttime": "11:00",
+            "sch_tripendtime": "11:00",
+            "lastlocationid": 21130,
+            "currentlocationid": 21076,
+            "nextlocationid": 21019,
+            "currentstop": "",
+            "nextstop": "Mekhri Circle (Towards Hebbala)",
+            "laststop": "Pallavi Talkies (Towards Kempegowda Bus Station)",
+            "stopCoveredStatus": 1,
+            "heading": 21,
+            "lastrefreshon": "13-02-2023 11:57:47",
+            "lastreceiveddatetimeflag": 0
+          },
+          {
+            "vehicleid": 21575,
+            "vehiclenumber": "KA57F2403",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 12.966782,
+            "centerlong": 77.587914,
+            "eta": "",
+            "sch_arrivaltime": "10:17",
+            "sch_departuretime": "10:17",
+            "actual_arrivaltime": "11:15",
+            "actual_departuretime": "11:15",
+            "sch_tripstarttime": "10:15",
+            "sch_tripendtime": "10:15",
+            "lastlocationid": 36131,
+            "currentlocationid": 22667,
+            "nextlocationid": 20725,
+            "currentstop": "",
+            "nextstop": "Corporation (Towards Cauvery Bhavan / Mysore Bank)",
+            "laststop": "Palace Ground (Towards Mekhri Circle)",
+            "stopCoveredStatus": 1,
+            "heading": 214,
+            "lastrefreshon": "13-02-2023 11:57:44",
+            "lastreceiveddatetimeflag": 0
+          }
+        ]
+      },
+      {
+        "routeid": 3804,
+        "stationid": 23147,
+        "stationname": "ಅರಕೆರೆ ಗೇಟ್",
+        "from": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "to": "ಕೆಂಪೇಗೌಡ ಅಂತರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+        "routeno": "KIA-14",
+        "distance_on_station": 1.586,
+        "centerlat": 12.89057,
+        "centerlong": 77.59804,
+        "responsecode": 200,
+        "isnotify": 0,
+        "vehicleDetails": [
+          {
+            "vehicleid": 19979,
+            "vehiclenumber": "KA57F1802",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 13.02217,
+            "centerlong": 77.584381,
+            "eta": "",
+            "sch_arrivaltime": "11:03",
+            "sch_departuretime": "11:03",
+            "actual_arrivaltime": "11:04",
+            "actual_departuretime": "11:04",
+            "sch_tripstarttime": "11:00",
+            "sch_tripendtime": "11:00",
+            "lastlocationid": 21130,
+            "currentlocationid": 21076,
+            "nextlocationid": 21019,
+            "currentstop": "",
+            "nextstop": "Mekhri Circle (Towards Hebbala)",
+            "laststop": "Pallavi Talkies (Towards Kempegowda Bus Station)",
+            "stopCoveredStatus": 1,
+            "heading": 21,
+            "lastrefreshon": "13-02-2023 11:57:47",
+            "lastreceiveddatetimeflag": 0
+          },
+          {
+            "vehicleid": 21575,
+            "vehiclenumber": "KA57F2403",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 12.966782,
+            "centerlong": 77.587914,
+            "eta": "",
+            "sch_arrivaltime": "10:18",
+            "sch_departuretime": "10:18",
+            "actual_arrivaltime": "11:16",
+            "actual_departuretime": "11:17",
+            "sch_tripstarttime": "10:15",
+            "sch_tripendtime": "10:15",
+            "lastlocationid": 36131,
+            "currentlocationid": 22667,
+            "nextlocationid": 20725,
+            "currentstop": "",
+            "nextstop": "Corporation (Towards Cauvery Bhavan / Mysore Bank)",
+            "laststop": "Palace Ground (Towards Mekhri Circle)",
+            "stopCoveredStatus": 1,
+            "heading": 214,
+            "lastrefreshon": "13-02-2023 11:57:44",
+            "lastreceiveddatetimeflag": 0
+          }
+        ]
+      },
+      {
+        "routeid": 3804,
+        "stationid": 35156,
+        "stationname": "ಹೆಚ್‌ಎಸ್‌ಬಿಸಿ",
+        "from": "ರಾಯಲ್‌ ಮೀನಾಕ್ಷಿ ಮಾಲ್‌ ಬಿಜಿ ರಸ್ತೆ",
+        "to": "ಕೆಂಪೇಗೌಡ ಅಂತರಾಷ್ಟ್ರೀಯ ವಿಮಾನ ನಿಲ್ದಾಣ",
+        "routeno": "KIA-14",
+        "distance_on_station": 1.824,
+        "centerlat": 12.89261,
+        "centerlong": 77.59876,
+        "responsecode": 200,
+        "isnotify": 0,
+        "vehicleDetails": [
+          {
+            "vehicleid": 19979,
+            "vehiclenumber": "KA57F1802",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 13.02217,
+            "centerlong": 77.584381,
+            "eta": "",
+            "sch_arrivaltime": "11:04",
+            "sch_departuretime": "11:04",
+            "actual_arrivaltime": "11:05",
+            "actual_departuretime": "11:05",
+            "sch_tripstarttime": "11:00",
+            "sch_tripendtime": "11:00",
+            "lastlocationid": 21130,
+            "currentlocationid": 21076,
+            "nextlocationid": 21019,
+            "currentstop": "",
+            "nextstop": "Mekhri Circle (Towards Hebbala)",
+            "laststop": "Palace Ground (Towards Mekhri Circle)",
+            "stopCoveredStatus": 1,
+            "heading": 21,
+            "lastrefreshon": "13-02-2023 11:57:47",
+            "lastreceiveddatetimeflag": 0
+          },
+          {
+            "vehicleid": 21575,
+            "vehiclenumber": "KA57F2403",
+            "servicetypeid": 73,
+            "servicetype": "AC",
+            "centerlat": 12.966782,
+            "centerlong": 77.587914,
+            "eta": "",
+            "sch_arrivaltime": "10:19",
+            "sch_departuretime": "10:19",
+            "actual_arrivaltime": "11:17",
+            "actual_departuretime": "11:17",
+            "sch_tripstarttime": "10:15",
+            "sch_tripendtime": "10:15",
+            "lastlocationid": 36131,
+            "currentlocationid": 22667,
+            "nextlocationid": 20725,
+            "currentstop": "",
+            "nextstop": "Corporation (Towards Cauvery Bhavan / Mysore Bank)",
+            "laststop": "Pallavi Talkies (Towards Kempegowda Bus Station)",
+            "stopCoveredStatus": 1,
+            "heading": 214,
+            "lastrefreshon": "13-02-2023 11:57:44",
+            "lastreceiveddatetimeflag": 0
+          }
+        ]
+      }
+    ]
+  },
+  "message": "Success",
+  "issuccess": true,
+  "exception": null,
+  "rowCount": 0,
+  "responsecode": 200
 }
 ```
 
