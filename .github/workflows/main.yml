@@ -1,4 +1,4 @@
-name: Workflow for build and deploy the interface from main branch to gh-pages
+name: Workflow to build and deploy Swagger UI from main branch to Netlify
 on:
   push:
     branches:
@@ -30,6 +30,15 @@ jobs:
         run: yarn build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: nwtgck/actions-netlify@v1.2
         with:
-          folder: dist
+          publish-dir: './dist'
+          production-deploy: true
+          production-branch: main
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 5
