@@ -1,0 +1,12 @@
+{{ data.responses = data.utils.getResponses(data); }}
+{{ data.responseSchemas = false; }}
+{{~ data.responses :response }}
+{{ if (response.content) data.responseSchemas = true; }}
+{{~}}
+
+{{? data.responseSchemas }}
+
+{{= data.utils.getResponseExamples(data) }}
+{{?}}
+
+{{= data.tags.section }}
