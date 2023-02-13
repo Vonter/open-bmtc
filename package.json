@@ -1,0 +1,29 @@
+{
+  "name": "open-bmtc",
+  "version": "1.0.0",
+  "description": "Data and analysis around public transit in Bengaluru.",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite serve --host 0.0.0.0 --port 3000 --config vite.config.js",
+    "build": "vite build --config vite.config.js",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonter/open-bmtc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vonter/open-bmtc/issues"
+  },
+  "homepage": "https://github.com/Vonter/open-bmtc#readme",
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "swagger-ui": "4.5.2",
+    "vite": "^4.1.1"
+  },
+  "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.0.4"
+  }
+}
