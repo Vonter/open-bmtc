@@ -933,7 +933,7 @@ paths:
                 stationName:
                   type: string
             example:
-              routeid: 'Hebbal'
+              stationName: 'Hebbal'
   /SearchByRouteDetails_v2:
     post:
       summary: Get details of route by routeid
