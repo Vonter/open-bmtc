@@ -1,14 +1,14 @@
 openapi: 3.0.0
 info:
   title: Nimmbus API
-  version: 1.0
+  version: "1.0"
 servers:
   - url: https://bmtcmobileapistaging.amnex.com/WebAPI
     description: API used by the Nimmbus app developed by BMTC
 paths:
   /GetAllRouteList:
     post:
-      summary: Get all routes
+      summary: Returns a list of all the BMTC routes
       tags:
         - routes
       responses:
@@ -145,7 +145,7 @@ paths:
             example: {}
   /NearbyStations_v2:
     post:
-      summary: Find bus stops near location
+      summary: Returns a list of bus stops near the given location
       tags:
         - stops
       responses:
@@ -312,7 +312,7 @@ paths:
               longitude: 77.57952690124513
   /FindNearByBusStop_v2:
     post:
-      summary: Find bus stops matching given name
+      summary: Returns a list of bus stops matching given name
       tags:
         - stops
       responses:
@@ -464,7 +464,7 @@ paths:
               stationName: ra
   /GetTimetableByStation_v2:
     post:
-      summary: Get timetable of routes passing through given station IDs
+      summary: Returns the timetable of routes passing through given fromstationid and tostationid
       tags:
         - timetables
       responses:
@@ -542,7 +542,7 @@ paths:
               toStationId: 35779
   /GetTimetableByRouteId_v2:
     post:
-      summary: Get timetable of route by given route ID
+      summary: Returns timetable of route corresponding to given routeid
       tags:
         - timetables
       responses:
@@ -638,7 +638,7 @@ paths:
               current_date: '2023-02-13'
   /GetPathDetails:
     post:
-      summary: Get points along path followed by given route ID
+      summary: Returns coordinates of points along the path followed by given routeid
       tags:
         - routes
       responses:
@@ -717,88 +717,10 @@ paths:
             example:
               routeid: 7910
   /RoutePoints:
-    post:
-      summary: Get points along path followed by given route ID
-      tags:
-        - routes
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        latitude:
-                          type: string
-                        longitude:
-                          type: string
-                        responsecode:
-                          type: number
-                  Message:
-                    type: string
-                  Issuccess:
-                    type: boolean
-                  exception:
-                    type: object
-                  RowCount:
-                    type: number
-                  responsecode:
-                    type: number
-              example:
-                data:
-                  - latitude: '12.98414'
-                    longitude: '77.60334'
-                    responsecode: 200
-                  - latitude: '12.98415'
-                    longitude: '77.60332'
-                    responsecode: 200
-                  - latitude: '12.98416'
-                    longitude: '77.60327'
-                    responsecode: 200
-                  - latitude: '12.984169999999999'
-                    longitude: '77.60322'
-                    responsecode: 200
-                  - latitude: '12.984189999999998'
-                    longitude: '77.60315'
-                    responsecode: 200
-                  - latitude: '12.984329999999998'
-                    longitude: '77.60262'
-                    responsecode: 200
-                  - latitude: '12.984359999999999'
-                    longitude: '77.6025'
-                    responsecode: 200
-                  - latitude: '12.984449999999999'
-                    longitude: '77.60213'
-                    responsecode: 200
-                  - latitude: '12.98449'
-                    longitude: '77.60198'
-                    responsecode: 200
-                  - latitude: '12.984559999999998'
-                    longitude: '77.60177999999999'
-                    Message: Success
-                    Issuccess: true
-                    exception:
-                      RowCount: 116
-                    responsecode: 200
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                routeid:
-                  type: number
-            example:
-              routeid: 7910
+    $ref: '#/paths/~1GetPathDetails'
   /SearchStation:
     post:
-      summary: Search for station by name
+      summary: Returns a list of bus stops (with details) matching given name
       tags:
         - stops
       responses:
@@ -949,7 +871,7 @@ paths:
               stationName: 'Hebbal'
   /SearchByRouteDetails_v2:
     post:
-      summary: Get details of route by routeid
+      summary: Returns details of route corresponding to given routeid, including live tracking and vehicle details
       tags:
         - routes
       responses:
@@ -960,165 +882,312 @@ paths:
               schema: 
                 type: object
                 properties: 
-                  data: 
-                    type: array
-                    items: 
-                      type: object
-                      properties: 
-                        routeid: 
-                          type: integer
-                          format: number
-                        stationid: 
-                          type: integer
-                          format: number
-                        stationname: 
-                          type: string
-                        from: 
-                          type: string
-                        to: 
-                          type: string
-                        routeno: 
-                          type: string
-                        distance_on_station: 
-                          type: integer
-                          format: number
-                        centerlat: 
-                          type: number
-                        centerlong: 
-                          type: number
-                        responsecode: 
-                          type: integer
-                          format: number
-                        isnotify: 
-                          type: integer
-                          format: number
-                        vehicleDetails: 
-                          type: array
-                          items: 
-                            type: object
-                            properties: 
-                              vehicleid: 
-                                type: integer
-                                format: number
-                              vehiclenumber: 
-                                type: string
-                              servicetypeid: 
-                                type: integer
-                                format: number
-                              servicetype: 
-                                type: string
-                              centerlat: 
-                                type: number
-                              centerlong: 
-                                type: number
-                              eta: 
-                                type: string
-                              sch_arrivaltime: 
-                                type: string
-                              sch_departuretime: 
-                                type: string
-                              actual_arrivaltime: 
-                                type: string
-                              actual_departuretime: 
-                                type: string
-                              sch_tripstarttime: 
-                                type: string
-                              sch_tripendtime: 
-                                type: string
-                              lastlocationid: 
-                                type: integer
-                                format: number
-                              currentlocationid: 
-                                type: integer
-                                format: number
-                              nextlocationid: 
-                                type: integer
-                                format: number
-                              currentstop: 
-                                type: string
-                              nextstop: 
-                                type: string
-                              laststop: 
-                                type: string
-                              stopCoveredStatus: 
-                                type: integer
-                                format: number
-                              heading: 
-                                type: integer
-                                format: number
-                              lastrefreshon: 
-                                type: string
-                              lastreceiveddatetimeflag: 
-                                type: integer
-                                format: number
-                  mapData: 
-                    type: array
-                    items: 
-                      type: object
-                      properties: 
-                        vehicleid: 
-                          type: integer
-                          format: number
-                        vehiclenumber: 
-                          type: string
-                        servicetypeid: 
-                          type: integer
-                          format: number
-                        servicetype: 
-                          type: string
-                        centerlat: 
-                          type: number
-                        centerlong: 
-                          type: number
-                        eta: 
-                          type: string
-                        sch_arrivaltime: 
-                          type: string
-                        sch_departuretime: 
-                          type: string
-                        actual_arrivaltime: 
-                          type: string
-                        actual_departuretime: 
-                          type: string
-                        sch_tripstarttime: 
-                          type: string
-                        sch_tripendtime: 
-                          type: string
-                        lastlocationid: 
-                          type: integer
-                          format: number
-                        currentlocationid: 
-                          type: integer
-                          format: number
-                        nextlocationid: 
-                          type: integer
-                          format: number
-                        currentstop: 
-                          type: string
-                        nextstop: 
-                          type: string
-                        laststop: 
-                          type: string
-                        stopCoveredStatus: 
-                          type: integer
-                          format: number
-                        heading: 
-                          type: integer
-                          format: number
-                        lastrefreshon: 
-                          type: string
-                        lastreceiveddatetimeflag: 
-                          type: integer
-                          format: number
-                    down: 
-                      type: object
-                      properties: 
-                        data: 
-                          type: array
-                          items: 
-                        mapData: 
-                          type: array
-                          items: 
+                  up: 
+                    type: object
+                    properties: 
+                      data: 
+                        type: array
+                        items: 
+                          type: object
+                          properties: 
+                            routeid: 
+                              type: integer
+                              format: number
+                            stationid: 
+                              type: integer
+                              format: number
+                            stationname: 
+                              type: string
+                            from: 
+                              type: string
+                            to: 
+                              type: string
+                            routeno: 
+                              type: string
+                            distance_on_station: 
+                              type: integer
+                              format: number
+                            centerlat: 
+                              type: number
+                            centerlong: 
+                              type: number
+                            responsecode: 
+                              type: integer
+                              format: number
+                            isnotify: 
+                              type: integer
+                              format: number
+                            vehicleDetails: 
+                              type: array
+                              items: 
+                                type: object
+                                properties: 
+                                  vehicleid: 
+                                    type: integer
+                                    format: number
+                                  vehiclenumber: 
+                                    type: string
+                                  servicetypeid: 
+                                    type: integer
+                                    format: number
+                                  servicetype: 
+                                    type: string
+                                  centerlat: 
+                                    type: number
+                                  centerlong: 
+                                    type: number
+                                  eta: 
+                                    type: string
+                                  sch_arrivaltime: 
+                                    type: string
+                                  sch_departuretime: 
+                                    type: string
+                                  actual_arrivaltime: 
+                                    type: string
+                                  actual_departuretime: 
+                                    type: string
+                                  sch_tripstarttime: 
+                                    type: string
+                                  sch_tripendtime: 
+                                    type: string
+                                  lastlocationid: 
+                                    type: integer
+                                    format: number
+                                  currentlocationid: 
+                                    type: integer
+                                    format: number
+                                  nextlocationid: 
+                                    type: integer
+                                    format: number
+                                  currentstop: 
+                                    type: string
+                                  nextstop: 
+                                    type: string
+                                  laststop: 
+                                    type: string
+                                  stopCoveredStatus: 
+                                    type: integer
+                                    format: number
+                                  heading: 
+                                    type: integer
+                                    format: number
+                                  lastrefreshon: 
+                                    type: string
+                                  lastreceiveddatetimeflag: 
+                                    type: integer
+                                    format: number
+                      mapData: 
+                        type: array
+                        items: 
+                          type: object
+                          properties: 
+                            vehicleid: 
+                              type: integer
+                              format: number
+                            vehiclenumber: 
+                              type: string
+                            servicetypeid: 
+                              type: integer
+                              format: number
+                            servicetype: 
+                              type: string
+                            centerlat: 
+                              type: number
+                            centerlong: 
+                              type: number
+                            eta: 
+                              type: string
+                            sch_arrivaltime: 
+                              type: string
+                            sch_departuretime: 
+                              type: string
+                            actual_arrivaltime: 
+                              type: string
+                            actual_departuretime: 
+                              type: string
+                            sch_tripstarttime: 
+                              type: string
+                            sch_tripendtime: 
+                              type: string
+                            lastlocationid: 
+                              type: integer
+                              format: number
+                            currentlocationid: 
+                              type: integer
+                              format: number
+                            nextlocationid: 
+                              type: integer
+                              format: number
+                            currentstop: 
+                              type: string
+                            nextstop: 
+                              type: string
+                            laststop: 
+                              type: string
+                            stopCoveredStatus: 
+                              type: integer
+                              format: number
+                            heading: 
+                              type: integer
+                              format: number
+                            lastrefreshon: 
+                              type: string
+                            lastreceiveddatetimeflag: 
+                              type: integer
+                              format: number
+                  down: 
+                    type: object
+                    properties: 
+                      data: 
+                        type: array
+                        items: 
+                          type: object
+                          properties: 
+                            routeid: 
+                              type: integer
+                              format: number
+                            stationid: 
+                              type: integer
+                              format: number
+                            stationname: 
+                              type: string
+                            from: 
+                              type: string
+                            to: 
+                              type: string
+                            routeno: 
+                              type: string
+                            distance_on_station: 
+                              type: integer
+                              format: number
+                            centerlat: 
+                              type: number
+                            centerlong: 
+                              type: number
+                            responsecode: 
+                              type: integer
+                              format: number
+                            isnotify: 
+                              type: integer
+                              format: number
+                            vehicleDetails: 
+                              type: array
+                              items: 
+                                type: object
+                                properties: 
+                                  vehicleid: 
+                                    type: integer
+                                    format: number
+                                  vehiclenumber: 
+                                    type: string
+                                  servicetypeid: 
+                                    type: integer
+                                    format: number
+                                  servicetype: 
+                                    type: string
+                                  centerlat: 
+                                    type: number
+                                  centerlong: 
+                                    type: number
+                                  eta: 
+                                    type: string
+                                  sch_arrivaltime: 
+                                    type: string
+                                  sch_departuretime: 
+                                    type: string
+                                  actual_arrivaltime: 
+                                    type: string
+                                  actual_departuretime: 
+                                    type: string
+                                  sch_tripstarttime: 
+                                    type: string
+                                  sch_tripendtime: 
+                                    type: string
+                                  lastlocationid: 
+                                    type: integer
+                                    format: number
+                                  currentlocationid: 
+                                    type: integer
+                                    format: number
+                                  nextlocationid: 
+                                    type: integer
+                                    format: number
+                                  currentstop: 
+                                    type: string
+                                  nextstop: 
+                                    type: string
+                                  laststop: 
+                                    type: string
+                                  stopCoveredStatus: 
+                                    type: integer
+                                    format: number
+                                  heading: 
+                                    type: integer
+                                    format: number
+                                  lastrefreshon: 
+                                    type: string
+                                  lastreceiveddatetimeflag: 
+                                    type: integer
+                                    format: number
+                      mapData: 
+                        type: array
+                        items: 
+                          type: object
+                          properties: 
+                            vehicleid: 
+                              type: integer
+                              format: number
+                            vehiclenumber: 
+                              type: string
+                            servicetypeid: 
+                              type: integer
+                              format: number
+                            servicetype: 
+                              type: string
+                            centerlat: 
+                              type: number
+                            centerlong: 
+                              type: number
+                            eta: 
+                              type: string
+                            sch_arrivaltime: 
+                              type: string
+                            sch_departuretime: 
+                              type: string
+                            actual_arrivaltime: 
+                              type: string
+                            actual_departuretime: 
+                              type: string
+                            sch_tripstarttime: 
+                              type: string
+                            sch_tripendtime: 
+                              type: string
+                            lastlocationid: 
+                              type: integer
+                              format: number
+                            currentlocationid: 
+                              type: integer
+                              format: number
+                            nextlocationid: 
+                              type: integer
+                              format: number
+                            currentstop: 
+                              type: string
+                            nextstop: 
+                              type: string
+                            laststop: 
+                              type: string
+                            stopCoveredStatus: 
+                              type: integer
+                              format: number
+                            heading: 
+                              type: integer
+                              format: number
+                            lastrefreshon: 
+                              type: string
+                            lastreceiveddatetimeflag: 
+                              type: integer
+                              format: number
                   message: 
                     type: string
                   issuccess: 
@@ -1502,7 +1571,7 @@ paths:
             example: {}
   /AroundBusStops_v2:
     post:
-      summary: Find places around bus stops
+      summary: Returns list of notable places around bus stops
       tags:
         - other
       responses:
