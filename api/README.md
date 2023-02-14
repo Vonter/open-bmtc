@@ -5,27 +5,13 @@ Base URLs:
 
 * <a href="https://bmtcmobileapistaging.amnex.com/WebAPI">https://bmtcmobileapistaging.amnex.com/WebAPI</a>
 
-<h1 id="nimmbus-api-api-endpoints">API Endpoints</h1>
+<h1 id="nimmbus-api-routes">routes</h1>
 
 [Get all routes](#get-all-routes)
 
-[Find bus stops near location](#find-bus-stops-near-location)
-
-[Find bus stops matching given name](#find-bus-stops-matching-given-name)
-
-[Get timetable of routes passing through given station IDs](#get-timetable-of-routes-passing-through-given-station-ids)
-
-[Get timetable of route by given route ID](#get-timetable-of-route-by-given-route-id)
-
 [Get points along path followed by given route ID](#get-points-along-path-followed-by-given-route-id)
 
-[Search for station by name](#search-for-station-by-name)
-
 [Get details of route by routeid](#get-details-of-route-by-routeid)
-
-[Get emergency message](#get-emergency-message)
-
-[Find places around bus stops](#find-places-around-bus-stops)
 
 ## Get all routes
 
@@ -157,442 +143,6 @@ Base URLs:
 }
 ```
 
-## Find bus stops near location
-
-`POST /NearbyStations_v2`
-
-> Body parameter
-
-```json
-{
-  "latitude": 0,
-  "longitude": 0,
-  "stationId": 0
-}
-```
-
-<h3 id="find-bus-stops-near-location-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» latitude|body|number|false|none|
-|» longitude|body|number|false|none|
-|» stationId|body|number|false|none|
-
-> 200 Response
-
-```json
-{
-  "data": [
-    {
-      "rowno": 1,
-      "geofenceid": 23354,
-      "geofencename": "Shivananda Store",
-      "center_lat": 12.98755,
-      "center_lon": 77.58039,
-      "towards": "Ananda Rao Circle",
-      "distance": 0.12,
-      "totalminute": 1,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 2,
-      "geofenceid": 21175,
-      "geofencename": "Shivananda Store",
-      "center_lat": 12.98735,
-      "center_lon": 77.58022,
-      "towards": "Rajmahal Guttahalli",
-      "distance": 0.13,
-      "totalminute": 2,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 3,
-      "geofenceid": 24239,
-      "geofencename": "Shivananda Store",
-      "center_lat": 12.98676,
-      "center_lon": 77.57951,
-      "towards": "RC College",
-      "distance": 0.17,
-      "totalminute": 2,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 4,
-      "geofenceid": 21174,
-      "geofencename": "Shivananda Store",
-      "center_lat": 12.98663,
-      "center_lon": 77.57936,
-      "towards": "Kempegowda Bus Station",
-      "distance": 0.18,
-      "totalminute": 2,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 5,
-      "geofenceid": 28295,
-      "geofencename": "Swastik Sheshadripuram",
-      "center_lat": 12.98784,
-      "center_lon": 77.57449,
-      "towards": "Central",
-      "distance": 0.55,
-      "totalminute": 7,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 6,
-      "geofenceid": 26913,
-      "geofencename": "The Lalit Ashok Kumarkrupa Road",
-      "center_lat": 12.99201,
-      "center_lon": 77.58312,
-      "towards": "R M Guttahalli",
-      "distance": 0.57,
-      "totalminute": 7,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 7,
-      "geofenceid": 26782,
-      "geofencename": "Swastik Sheshadripuram College",
-      "center_lat": 12.98851,
-      "center_lon": 77.57414,
-      "towards": "Ananda Rao Circle",
-      "distance": 0.58,
-      "totalminute": 7,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 8,
-      "geofenceid": 35303,
-      "geofencename": "Swastik Sheshadripuram College",
-      "center_lat": 12.98798,
-      "center_lon": 77.57422,
-      "towards": "Central",
-      "distance": 0.58,
-      "totalminute": 7,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 9,
-      "geofenceid": 35073,
-      "geofencename": "Swastik Sheshadripuram College",
-      "center_lat": 12.98916,
-      "center_lon": 77.57416,
-      "towards": "Shivananda Circle",
-      "distance": 0.59,
-      "totalminute": 7,
-      "responsecode": 200,
-      "radiuskm": 1
-    },
-    {
-      "rowno": 10,
-      "geofenceid": 20938,
-      "geofencename": "KPCC Office",
-      "center_lat": 12.98287,
-      "center_lon": 77.57642,
-      "towards": "Shivananda Circle",
-      "distance": 0.69,
-      "totalminute": 8,
-      "responsecode": 200,
-      "radiuskm": 1,
-      "Message": "Success",
-      "Issuccess": true,
-      "exception": {
-        "RowCount": 10
-      }
-    }
-  ]
-}
-```
-
-## Find bus stops matching given name
-
-`POST /FindNearByBusStop_v2`
-
-> Body parameter
-
-```json
-{
-  "stationName": "string"
-}
-```
-
-<h3 id="find-bus-stops-matching-given-name-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» stationName|body|string|false|none|
-
-> 200 Response
-
-```json
-{
-  "data": [
-    {
-      "srno": 2361,
-      "routeno": "",
-      "routeid": 34303,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Rachammanahalli",
-      "route": ""
-    },
-    {
-      "srno": 2362,
-      "routeno": "",
-      "routeid": 34304,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Rachenahalli",
-      "route": ""
-    },
-    {
-      "srno": 2363,
-      "routeno": "",
-      "routeid": 34305,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Rachenahalli Cross",
-      "route": ""
-    },
-    {
-      "srno": 2364,
-      "routeno": "",
-      "routeid": 34306,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Rachenalli Lake Park Dasarahalli",
-      "route": ""
-    },
-    {
-      "srno": 505,
-      "routeno": "",
-      "routeid": 23392,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Radhareddy Layout Road SJP Main Road",
-      "route": ""
-    },
-    {
-      "srno": 2365,
-      "routeno": "",
-      "routeid": 34307,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Radiant Redwood Apartment Koppa Road",
-      "route": ""
-    },
-    {
-      "srno": 2367,
-      "routeno": "",
-      "routeid": 34310,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Raghavendra Circle Hosakote",
-      "route": ""
-    },
-    {
-      "srno": 2366,
-      "routeno": "",
-      "routeid": 34309,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Raghavendra Circle T C Palya",
-      "route": ""
-    },
-    {
-      "srno": 2368,
-      "routeno": "",
-      "routeid": 34312,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Raghavendra Colony",
-      "route": ""
-    },
-    {
-      "srno": 2680,
-      "routeno": "",
-      "routeid": 34834,
-      "center_lat": 0,
-      "center_lon": 0,
-      "responsecode": 200,
-      "routetypeid": "2",
-      "routename": "Raghavendra Dhama",
-      "route": "",
-      "Message": "Success",
-      "Issuccess": true,
-      "exception": {
-        "RowCount": 3263
-      }
-    }
-  ]
-}
-```
-
-## Get timetable of routes passing through given station IDs
-
-`POST /GetTimetableByStation_v2`
-
-> Body parameter
-
-```json
-{
-  "fromStationId": 0,
-  "toStationId": 0
-}
-```
-
-<h3 id="get-timetable-of-routes-passing-through-given-station-ids-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» fromStationId|body|number|false|none|
-|» toStationId|body|number|false|none|
-
-> 200 Response
-
-```json
-{
-  "data": [
-    {
-      "id": 2,
-      "fromstationid": 27797,
-      "tostationid": 21173,
-      "routeid": 7616,
-      "f": 0,
-      "t": 11.31,
-      "routeno": "290-A",
-      "routename": "RCH-SBS",
-      "fromstationname": "Rachenahalli",
-      "tostationname": "Shivajinagara Bus Station"
-    }
-  ],
-  "Message": "Success",
-  "Issuccess": true,
-  "exception": {
-    "RowCount": 1
-  },
-  "responsecode": 200
-}
-```
-
-## Get timetable of route by given route ID
-
-`POST /GetTimetableByRouteId_v2`
-
-> Body parameter
-
-```json
-{
-  "routeid": 0,
-  "fromStationId": 0,
-  "toStationId": 0,
-  "current_date": "string"
-}
-```
-
-<h3 id="get-timetable-of-route-by-given-route-id-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» routeid|body|number|false|none|
-|» fromStationId|body|number|false|none|
-|» toStationId|body|number|false|none|
-|» current_date|body|string|false|none|
-
-> 200 Response
-
-```json
-{
-  "data": [
-    {
-      "fromstationname": "Rachenahalli",
-      "tostationname": "Shivajinagara Bus Station",
-      "fromstationid": "27797",
-      "tostationid": "21173",
-      "tripdetails": [
-        {
-          "starttime": "06:35"
-        }
-      ],
-      "endtime": "07:20"
-    },
-    {
-      "starttime": "08:15",
-      "endtime": "09:00"
-    },
-    {
-      "starttime": "08:20",
-      "endtime": "09:05"
-    },
-    {
-      "starttime": "08:20",
-      "endtime": "09:05"
-    },
-    {
-      "starttime": "09:35",
-      "endtime": "10:20"
-    },
-    {
-      "starttime": "10:20",
-      "endtime": "11:05"
-    },
-    {
-      "starttime": "11:00",
-      "endtime": "11:40"
-    },
-    {
-      "starttime": "11:00",
-      "endtime": "11:40"
-    },
-    {
-      "starttime": "12:30",
-      "endtime": "13:10"
-    },
-    {
-      "starttime": "14:30",
-      "endtime": "15:05"
-    }
-  ],
-  "Message": "Success",
-  "Issuccess": true,
-  "exception": {
-    "RowCount": 1
-  },
-  "responsecode": 200
-}
-```
-
 ## Get points along path followed by given route ID
 
 `POST /RoutePoints`
@@ -673,138 +223,6 @@ Base URLs:
       "responsecode": 200
     }
   ]
-}
-```
-
-## Search for station by name
-
-`POST /SearchStation`
-
-> Body parameter
-
-```json
-{
-  "stationName": "string"
-}
-```
-
-<h3 id="search-for-station-by-name-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» stationName|body|string|false|none|
-
-> 200 Response
-
-```json
-{
-  "data": [
-    {
-      "union_rowno": 4,
-      "row": 1,
-      "stopname": "ಹೆಬ್ಬಾಳ",
-      "stopid": 20817,
-      "geofencename": "Hebbala (Towards Hebbala Last Stop 279E)",
-      "center_lat": 13.04135,
-      "center_lon": 77.58885,
-      "towards": "Hebbala Last Stop 279E",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 2,
-      "stopname": "ಹೆಬ್ಬಾಳ",
-      "stopid": 25816,
-      "geofencename": "Hebbala (Towards Mekhri Circle)",
-      "center_lat": 13.03884,
-      "center_lon": 77.58947,
-      "towards": "Mekhri Circle",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 3,
-      "stopname": "ಹೆಬ್ಬಾಳ",
-      "stopid": 20820,
-      "geofencename": "Hebbala (Towards Yalahanka)",
-      "center_lat": 13.03828,
-      "center_lon": 77.58917,
-      "towards": "Yalahanka",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 4,
-      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
-      "stopid": 21527,
-      "geofencename": "Hebbala Bridge (Towards BEL Circle)",
-      "center_lat": 13.0427,
-      "center_lon": 77.58944,
-      "towards": "BEL Circle",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 5,
-      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
-      "stopid": 20822,
-      "geofencename": "Hebbala Bridge (Towards Nagavara)",
-      "center_lat": 13.04218,
-      "center_lon": 77.59387,
-      "towards": "Nagavara",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 6,
-      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
-      "stopid": 20823,
-      "geofencename": "Hebbala Bridge (Towards Tin Factory)",
-      "center_lat": 13.04293,
-      "center_lon": 77.59122,
-      "towards": "Tin Factory",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 4,
-      "row": 7,
-      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
-      "stopid": 25819,
-      "geofencename": "Hebbala Bridge (Towards Yalahanka)",
-      "center_lat": 13.04328,
-      "center_lon": 77.59036,
-      "towards": "Yalahanka",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 5,
-      "row": 1,
-      "stopname": "14ನೇ ಮೈನ್ ಎಚ್ಎಸ್ಆರ್ ಲೇಔಟ್",
-      "stopid": 20568,
-      "geofencename": "14th Main HSR Layout (Towards Hebbala)",
-      "center_lat": 12.91644,
-      "center_lon": 77.63458,
-      "towards": "Hebbala",
-      "responsecode": 200
-    },
-    {
-      "union_rowno": 5,
-      "row": 2,
-      "stopname": "80 ಅಡಿ ರೋಡ್ ಕಲ್ಯಾಣನಗರ",
-      "stopid": 21450,
-      "geofencename": "80ft Road Kalyananagara (Towards Hebbala)",
-      "center_lat": 13.02546,
-      "center_lon": 77.64042,
-      "towards": "Hebbala",
-      "responsecode": 200
-    }
-  ],
-  "Message": "Success",
-  "Issuccess": true,
-  "exception": null,
-  "RowCount": 97,
-  "responsecode": 200
 }
 ```
 
@@ -1169,6 +587,592 @@ Base URLs:
   "responsecode": 200
 }
 ```
+
+<h1 id="nimmbus-api-stops">stops</h1>
+
+[Find bus stops near location](#find-bus-stops-near-location)
+
+[Find bus stops matching given name](#find-bus-stops-matching-given-name)
+
+[Search for station by name](#search-for-station-by-name)
+
+## Find bus stops near location
+
+`POST /NearbyStations_v2`
+
+> Body parameter
+
+```json
+{
+  "latitude": 0,
+  "longitude": 0
+}
+```
+
+<h3 id="find-bus-stops-near-location-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» latitude|body|number|false|none|
+|» longitude|body|number|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "rowno": 1,
+      "geofenceid": 23354,
+      "geofencename": "Shivananda Store",
+      "center_lat": 12.98755,
+      "center_lon": 77.58039,
+      "towards": "Ananda Rao Circle",
+      "distance": 0.12,
+      "totalminute": 1,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 2,
+      "geofenceid": 21175,
+      "geofencename": "Shivananda Store",
+      "center_lat": 12.98735,
+      "center_lon": 77.58022,
+      "towards": "Rajmahal Guttahalli",
+      "distance": 0.13,
+      "totalminute": 2,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 3,
+      "geofenceid": 24239,
+      "geofencename": "Shivananda Store",
+      "center_lat": 12.98676,
+      "center_lon": 77.57951,
+      "towards": "RC College",
+      "distance": 0.17,
+      "totalminute": 2,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 4,
+      "geofenceid": 21174,
+      "geofencename": "Shivananda Store",
+      "center_lat": 12.98663,
+      "center_lon": 77.57936,
+      "towards": "Kempegowda Bus Station",
+      "distance": 0.18,
+      "totalminute": 2,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 5,
+      "geofenceid": 28295,
+      "geofencename": "Swastik Sheshadripuram",
+      "center_lat": 12.98784,
+      "center_lon": 77.57449,
+      "towards": "Central",
+      "distance": 0.55,
+      "totalminute": 7,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 6,
+      "geofenceid": 26913,
+      "geofencename": "The Lalit Ashok Kumarkrupa Road",
+      "center_lat": 12.99201,
+      "center_lon": 77.58312,
+      "towards": "R M Guttahalli",
+      "distance": 0.57,
+      "totalminute": 7,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 7,
+      "geofenceid": 26782,
+      "geofencename": "Swastik Sheshadripuram College",
+      "center_lat": 12.98851,
+      "center_lon": 77.57414,
+      "towards": "Ananda Rao Circle",
+      "distance": 0.58,
+      "totalminute": 7,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 8,
+      "geofenceid": 35303,
+      "geofencename": "Swastik Sheshadripuram College",
+      "center_lat": 12.98798,
+      "center_lon": 77.57422,
+      "towards": "Central",
+      "distance": 0.58,
+      "totalminute": 7,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 9,
+      "geofenceid": 35073,
+      "geofencename": "Swastik Sheshadripuram College",
+      "center_lat": 12.98916,
+      "center_lon": 77.57416,
+      "towards": "Shivananda Circle",
+      "distance": 0.59,
+      "totalminute": 7,
+      "responsecode": 200,
+      "radiuskm": 1
+    },
+    {
+      "rowno": 10,
+      "geofenceid": 20938,
+      "geofencename": "KPCC Office",
+      "center_lat": 12.98287,
+      "center_lon": 77.57642,
+      "towards": "Shivananda Circle",
+      "distance": 0.69,
+      "totalminute": 8,
+      "responsecode": 200,
+      "radiuskm": 1,
+      "Message": "Success",
+      "Issuccess": true,
+      "exception": {
+        "RowCount": 10
+      }
+    }
+  ]
+}
+```
+
+## Find bus stops matching given name
+
+`POST /FindNearByBusStop_v2`
+
+> Body parameter
+
+```json
+{
+  "stationName": "string"
+}
+```
+
+<h3 id="find-bus-stops-matching-given-name-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» stationName|body|string|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "srno": 2361,
+      "routeno": "",
+      "routeid": 34303,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Rachammanahalli",
+      "route": ""
+    },
+    {
+      "srno": 2362,
+      "routeno": "",
+      "routeid": 34304,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Rachenahalli",
+      "route": ""
+    },
+    {
+      "srno": 2363,
+      "routeno": "",
+      "routeid": 34305,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Rachenahalli Cross",
+      "route": ""
+    },
+    {
+      "srno": 2364,
+      "routeno": "",
+      "routeid": 34306,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Rachenalli Lake Park Dasarahalli",
+      "route": ""
+    },
+    {
+      "srno": 505,
+      "routeno": "",
+      "routeid": 23392,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Radhareddy Layout Road SJP Main Road",
+      "route": ""
+    },
+    {
+      "srno": 2365,
+      "routeno": "",
+      "routeid": 34307,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Radiant Redwood Apartment Koppa Road",
+      "route": ""
+    },
+    {
+      "srno": 2367,
+      "routeno": "",
+      "routeid": 34310,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Raghavendra Circle Hosakote",
+      "route": ""
+    },
+    {
+      "srno": 2366,
+      "routeno": "",
+      "routeid": 34309,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Raghavendra Circle T C Palya",
+      "route": ""
+    },
+    {
+      "srno": 2368,
+      "routeno": "",
+      "routeid": 34312,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Raghavendra Colony",
+      "route": ""
+    },
+    {
+      "srno": 2680,
+      "routeno": "",
+      "routeid": 34834,
+      "center_lat": 0,
+      "center_lon": 0,
+      "responsecode": 200,
+      "routetypeid": "2",
+      "routename": "Raghavendra Dhama",
+      "route": "",
+      "Message": "Success",
+      "Issuccess": true,
+      "exception": {
+        "RowCount": 3263
+      }
+    }
+  ]
+}
+```
+
+## Search for station by name
+
+`POST /SearchStation`
+
+> Body parameter
+
+```json
+{
+  "stationName": "string"
+}
+```
+
+<h3 id="search-for-station-by-name-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» stationName|body|string|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "union_rowno": 4,
+      "row": 1,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 20817,
+      "geofencename": "Hebbala (Towards Hebbala Last Stop 279E)",
+      "center_lat": 13.04135,
+      "center_lon": 77.58885,
+      "towards": "Hebbala Last Stop 279E",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 2,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 25816,
+      "geofencename": "Hebbala (Towards Mekhri Circle)",
+      "center_lat": 13.03884,
+      "center_lon": 77.58947,
+      "towards": "Mekhri Circle",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 3,
+      "stopname": "ಹೆಬ್ಬಾಳ",
+      "stopid": 20820,
+      "geofencename": "Hebbala (Towards Yalahanka)",
+      "center_lat": 13.03828,
+      "center_lon": 77.58917,
+      "towards": "Yalahanka",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 4,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 21527,
+      "geofencename": "Hebbala Bridge (Towards BEL Circle)",
+      "center_lat": 13.0427,
+      "center_lon": 77.58944,
+      "towards": "BEL Circle",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 5,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 20822,
+      "geofencename": "Hebbala Bridge (Towards Nagavara)",
+      "center_lat": 13.04218,
+      "center_lon": 77.59387,
+      "towards": "Nagavara",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 6,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 20823,
+      "geofencename": "Hebbala Bridge (Towards Tin Factory)",
+      "center_lat": 13.04293,
+      "center_lon": 77.59122,
+      "towards": "Tin Factory",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 4,
+      "row": 7,
+      "stopname": "ಹೆಬ್ಬಾಳ ಬ್ರಿಡ್ಜ್",
+      "stopid": 25819,
+      "geofencename": "Hebbala Bridge (Towards Yalahanka)",
+      "center_lat": 13.04328,
+      "center_lon": 77.59036,
+      "towards": "Yalahanka",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 5,
+      "row": 1,
+      "stopname": "14ನೇ ಮೈನ್ ಎಚ್ಎಸ್ಆರ್ ಲೇಔಟ್",
+      "stopid": 20568,
+      "geofencename": "14th Main HSR Layout (Towards Hebbala)",
+      "center_lat": 12.91644,
+      "center_lon": 77.63458,
+      "towards": "Hebbala",
+      "responsecode": 200
+    },
+    {
+      "union_rowno": 5,
+      "row": 2,
+      "stopname": "80 ಅಡಿ ರೋಡ್ ಕಲ್ಯಾಣನಗರ",
+      "stopid": 21450,
+      "geofencename": "80ft Road Kalyananagara (Towards Hebbala)",
+      "center_lat": 13.02546,
+      "center_lon": 77.64042,
+      "towards": "Hebbala",
+      "responsecode": 200
+    }
+  ],
+  "Message": "Success",
+  "Issuccess": true,
+  "exception": null,
+  "RowCount": 97,
+  "responsecode": 200
+}
+```
+
+<h1 id="nimmbus-api-timetables">timetables</h1>
+
+[Get timetable of routes passing through given station IDs](#get-timetable-of-routes-passing-through-given-station-ids)
+
+[Get timetable of route by given route ID](#get-timetable-of-route-by-given-route-id)
+
+## Get timetable of routes passing through given station IDs
+
+`POST /GetTimetableByStation_v2`
+
+> Body parameter
+
+```json
+{
+  "fromStationId": 0,
+  "toStationId": 0
+}
+```
+
+<h3 id="get-timetable-of-routes-passing-through-given-station-ids-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» fromStationId|body|number|false|none|
+|» toStationId|body|number|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "id": 2,
+      "fromstationid": 27797,
+      "tostationid": 21173,
+      "routeid": 7616,
+      "f": 0,
+      "t": 11.31,
+      "routeno": "290-A",
+      "routename": "RCH-SBS",
+      "fromstationname": "Rachenahalli",
+      "tostationname": "Shivajinagara Bus Station"
+    }
+  ],
+  "Message": "Success",
+  "Issuccess": true,
+  "exception": {
+    "RowCount": 1
+  },
+  "responsecode": 200
+}
+```
+
+## Get timetable of route by given route ID
+
+`POST /GetTimetableByRouteId_v2`
+
+> Body parameter
+
+```json
+{
+  "routeid": 0,
+  "fromStationId": 0,
+  "toStationId": 0,
+  "current_date": "string"
+}
+```
+
+<h3 id="get-timetable-of-route-by-given-route-id-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» routeid|body|number|false|none|
+|» fromStationId|body|number|false|none|
+|» toStationId|body|number|false|none|
+|» current_date|body|string|false|none|
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "fromstationname": "Rachenahalli",
+      "tostationname": "Shivajinagara Bus Station",
+      "fromstationid": "27797",
+      "tostationid": "21173",
+      "tripdetails": [
+        {
+          "starttime": "06:35"
+        }
+      ],
+      "endtime": "07:20"
+    },
+    {
+      "starttime": "08:15",
+      "endtime": "09:00"
+    },
+    {
+      "starttime": "08:20",
+      "endtime": "09:05"
+    },
+    {
+      "starttime": "08:20",
+      "endtime": "09:05"
+    },
+    {
+      "starttime": "09:35",
+      "endtime": "10:20"
+    },
+    {
+      "starttime": "10:20",
+      "endtime": "11:05"
+    },
+    {
+      "starttime": "11:00",
+      "endtime": "11:40"
+    },
+    {
+      "starttime": "11:00",
+      "endtime": "11:40"
+    },
+    {
+      "starttime": "12:30",
+      "endtime": "13:10"
+    },
+    {
+      "starttime": "14:30",
+      "endtime": "15:05"
+    }
+  ],
+  "Message": "Success",
+  "Issuccess": true,
+  "exception": {
+    "RowCount": 1
+  },
+  "responsecode": 200
+}
+```
+
+<h1 id="nimmbus-api-other">other</h1>
+
+[Get emergency message](#get-emergency-message)
+
+[Find places around bus stops](#find-places-around-bus-stops)
 
 ## Get emergency message
 
