@@ -9,7 +9,8 @@ paths:
   /GetAllRouteList:
     post:
       summary: Get all routes
-      tags: routes
+      tags:
+        - routes
       responses:
         '200':
           description: OK
@@ -145,7 +146,8 @@ paths:
   /NearbyStations_v2:
     post:
       summary: Find bus stops near location
-      tags: stops
+      tags:
+        - stops
       responses:
         '200':
           description: OK
@@ -311,7 +313,8 @@ paths:
   /FindNearByBusStop_v2:
     post:
       summary: Find bus stops matching given name
-      tags: stops
+      tags:
+        - stops
       responses:
         '200':
           description: OK
@@ -462,7 +465,8 @@ paths:
   /GetTimetableByStation_v2:
     post:
       summary: Get timetable of routes passing through given station IDs
-      tags: timetables
+      tags:
+        - timetables
       responses:
         '200':
           description: OK
@@ -539,7 +543,8 @@ paths:
   /GetTimetableByRouteId_v2:
     post:
       summary: Get timetable of route by given route ID
-      tag: timetables
+      tags:
+        - timetables
       responses:
         '200':
           description: OK
@@ -634,7 +639,8 @@ paths:
   /GetPathDetails:
     post:
       summary: Get points along path followed by given route ID
-      tag: routes
+      tags:
+        - routes
       responses:
         '200':
           description: OK
@@ -713,7 +719,8 @@ paths:
   /RoutePoints:
     post:
       summary: Get points along path followed by given route ID
-      tag: routes
+      tags:
+        - routes
       responses:
         '200':
           description: OK
@@ -792,7 +799,8 @@ paths:
   /SearchStation:
     post:
       summary: Search for station by name
-      tag: stops
+      tags:
+        - stops
       responses:
         '200':
           description: OK
@@ -942,7 +950,8 @@ paths:
   /SearchByRouteDetails_v2:
     post:
       summary: Get details of route by routeid
-      tag: routes
+      tags:
+        - routes
       responses:
         '200':
           description: OK
@@ -1437,7 +1446,8 @@ paths:
   /GetEmergencyMessage:
     post:
       summary: Get emergency message
-      tag: other
+      tags:
+        - other
       responses:
         '200':
           description: OK
@@ -1493,7 +1503,8 @@ paths:
   /AroundBusStops_v2:
     post:
       summary: Find places around bus stops
-      tag: other
+      tags:
+        - other
       responses:
         '200':
           description: OK
