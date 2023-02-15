@@ -14,6 +14,19 @@ widdershins --search false --omitHeader -u .widdershins/templates --code --summa
 
 The list of API endpoints (includes undocumented APIs) accessed by the Nimmbus app is available in [/api/urls.txt](/api/urls.txt)
 
+### API Changes
+
+#### February
+
+* New
+  - `https://bmtcmobileapistaging.amnex.com/WebAPI/GetTUMMOCSecretKey`
+
+* Removed
+  - `https://bmtcmobileapistaging.amnex.com/WebAPI/SearchRouteandDestination`
+
+* Changed
+  - `https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData` &rarr; `https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData_v1`
+
 ## Data
 
 Data scraped from the Nimmbus API is available under the [/data folder](/data)
