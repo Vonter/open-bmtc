@@ -17,12 +17,13 @@ https://bmtcmobileapistaging.amnex.com/WebAPI/GetEmergencyMessage
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetFareRoutes
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetFeedbackCategory
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetFeedbackparamList
-https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData
+https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData_v1
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileTripsData
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetNearbyVehicle
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetPathDetails
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetTimetableByRouteId_v2
 https://bmtcmobileapistaging.amnex.com/WebAPI/GetTimetableByStation_v2
+https://bmtcmobileapistaging.amnex.com/WebAPI/GetTUMMOCSecretKey
 https://bmtcmobileapistaging.amnex.com/WebAPI/HelplineNumbers
 https://bmtcmobileapistaging.amnex.com/WebAPI/InsertFeedback
 https://bmtcmobileapistaging.amnex.com/WebAPI/InsertMobileSOSOnData
@@ -33,7 +34,6 @@ https://bmtcmobileapistaging.amnex.com/WebAPI/NearbyStations_v2
 https://bmtcmobileapistaging.amnex.com/WebAPI/ResetPassword
 https://bmtcmobileapistaging.amnex.com/WebAPI/RoutePoints
 https://bmtcmobileapistaging.amnex.com/WebAPI/SearchByRouteDetails_v2
-https://bmtcmobileapistaging.amnex.com/WebAPI/SearchRouteandDestination
 https://bmtcmobileapistaging.amnex.com/WebAPI/SearchRoute_v2
 https://bmtcmobileapistaging.amnex.com/WebAPI/SearchStation
 https://bmtcmobileapistaging.amnex.com/WebAPI/TripPlannerMSMD
