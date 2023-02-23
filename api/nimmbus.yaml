@@ -871,9 +871,16 @@ paths:
               stationName: 'Hebbal'
   /SearchByRouteDetails_v2:
     post:
-      summary: Returns details of route corresponding to given routeid, including live tracking and vehicle details
+      summary: Returns details of route corresponding to given routeid. Includes details of stops on the route, list of vehicles plying on the route and live tracking of vehicles.
       tags:
         - routes
+      parameters:
+        - in: header
+          name: lan
+          schema:
+            type: string
+          required: false
+          description: "Language to use for stationname provided in the response. Either `kn` or `en`"
       responses:
         '200':
           description: OK

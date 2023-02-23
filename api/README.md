@@ -1,5 +1,5 @@
 
-<h1 id="nimmbus-api">Nimmbus API v1</h1>
+<h1 id="nimmbus-api">Nimmbus API v1.0</h1>
 
 Base URLs:
 
@@ -7,13 +7,13 @@ Base URLs:
 
 <h1 id="nimmbus-api-routes">routes</h1>
 
-[Get all routes](#get-all-routes)
+[Returns a list of all the BMTC routes](#returns-a-list-of-all-the-bmtc-routes)
 
-[Get points along path followed by given route ID](#get-points-along-path-followed-by-given-route-id)
+[Returns coordinates of points along the path followed by given routeid](#returns-coordinates-of-points-along-the-path-followed-by-given-routeid)
 
-[Get details of route by routeid](#get-details-of-route-by-routeid)
+[Returns details of route corresponding to given routeid. Includes details of stops on the route, list of vehicles plying on the route and live tracking of vehicles.](#returns-details-of-route-corresponding-to-given-routeid.-includes-details-of-stops-on-the-route,-list-of-vehicles-plying-on-the-route-and-live-tracking-of-vehicles.)
 
-## Get all routes
+## Returns a list of all the BMTC routes
 
 `POST /GetAllRouteList`
 
@@ -23,7 +23,7 @@ Base URLs:
 {}
 ```
 
-<h3 id="get-all-routes-parameters">Parameters</h3>
+<h3 id="returns-a-list-of-all-the-bmtc-routes-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -143,7 +143,7 @@ Base URLs:
 }
 ```
 
-## Get points along path followed by given route ID
+## Returns coordinates of points along the path followed by given routeid
 
 `POST /RoutePoints`
 
@@ -155,7 +155,7 @@ Base URLs:
 }
 ```
 
-<h3 id="get-points-along-path-followed-by-given-route-id-parameters">Parameters</h3>
+<h3 id="returns-coordinates-of-points-along-the-path-followed-by-given-routeid-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -226,7 +226,7 @@ Base URLs:
 }
 ```
 
-## Get details of route by routeid
+## Returns details of route corresponding to given routeid. Includes details of stops on the route, list of vehicles plying on the route and live tracking of vehicles.
 
 `POST /SearchByRouteDetails_v2`
 
@@ -239,10 +239,11 @@ Base URLs:
 }
 ```
 
-<h3 id="get-details-of-route-by-routeid-parameters">Parameters</h3>
+<h3 id="returns-details-of-route-corresponding-to-given-routeid.-includes-details-of-stops-on-the-route,-list-of-vehicles-plying-on-the-route-and-live-tracking-of-vehicles.-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|lan|header|string|false|Language to use for stationname provided in the response. Either `kn` or `en`|
 |body|body|object|false|none|
 |» routeid|body|number|false|none|
 |» servicetypeid|body|number|false|none|
@@ -590,13 +591,13 @@ Base URLs:
 
 <h1 id="nimmbus-api-stops">stops</h1>
 
-[Find bus stops near location](#find-bus-stops-near-location)
+[Returns a list of bus stops near the given location](#returns-a-list-of-bus-stops-near-the-given-location)
 
-[Find bus stops matching given name](#find-bus-stops-matching-given-name)
+[Returns a list of bus stops matching given name](#returns-a-list-of-bus-stops-matching-given-name)
 
-[Search for station by name](#search-for-station-by-name)
+[Returns a list of bus stops (with details) matching given name](#returns-a-list-of-bus-stops-(with-details)-matching-given-name)
 
-## Find bus stops near location
+## Returns a list of bus stops near the given location
 
 `POST /NearbyStations_v2`
 
@@ -609,7 +610,7 @@ Base URLs:
 }
 ```
 
-<h3 id="find-bus-stops-near-location-parameters">Parameters</h3>
+<h3 id="returns-a-list-of-bus-stops-near-the-given-location-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -751,7 +752,7 @@ Base URLs:
 }
 ```
 
-## Find bus stops matching given name
+## Returns a list of bus stops matching given name
 
 `POST /FindNearByBusStop_v2`
 
@@ -763,7 +764,7 @@ Base URLs:
 }
 ```
 
-<h3 id="find-bus-stops-matching-given-name-parameters">Parameters</h3>
+<h3 id="returns-a-list-of-bus-stops-matching-given-name-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -894,7 +895,7 @@ Base URLs:
 }
 ```
 
-## Search for station by name
+## Returns a list of bus stops (with details) matching given name
 
 `POST /SearchStation`
 
@@ -906,7 +907,7 @@ Base URLs:
 }
 ```
 
-<h3 id="search-for-station-by-name-parameters">Parameters</h3>
+<h3 id="returns-a-list-of-bus-stops-(with-details)-matching-given-name-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1028,11 +1029,11 @@ Base URLs:
 
 <h1 id="nimmbus-api-timetables">timetables</h1>
 
-[Get timetable of routes passing through given station IDs](#get-timetable-of-routes-passing-through-given-station-ids)
+[Returns the timetable of routes passing through given fromstationid and tostationid](#returns-the-timetable-of-routes-passing-through-given-fromstationid-and-tostationid)
 
-[Get timetable of route by given route ID](#get-timetable-of-route-by-given-route-id)
+[Returns timetable of route corresponding to given routeid](#returns-timetable-of-route-corresponding-to-given-routeid)
 
-## Get timetable of routes passing through given station IDs
+## Returns the timetable of routes passing through given fromstationid and tostationid
 
 `POST /GetTimetableByStation_v2`
 
@@ -1045,7 +1046,7 @@ Base URLs:
 }
 ```
 
-<h3 id="get-timetable-of-routes-passing-through-given-station-ids-parameters">Parameters</h3>
+<h3 id="returns-the-timetable-of-routes-passing-through-given-fromstationid-and-tostationid-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1080,7 +1081,7 @@ Base URLs:
 }
 ```
 
-## Get timetable of route by given route ID
+## Returns timetable of route corresponding to given routeid
 
 `POST /GetTimetableByRouteId_v2`
 
@@ -1095,7 +1096,7 @@ Base URLs:
 }
 ```
 
-<h3 id="get-timetable-of-route-by-given-route-id-parameters">Parameters</h3>
+<h3 id="returns-timetable-of-route-corresponding-to-given-routeid-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1172,7 +1173,7 @@ Base URLs:
 
 [Get emergency message](#get-emergency-message)
 
-[Find places around bus stops](#find-places-around-bus-stops)
+[Returns list of notable places around bus stops](#returns-list-of-notable-places-around-bus-stops)
 
 ## Get emergency message
 
@@ -1212,7 +1213,7 @@ Base URLs:
 }
 ```
 
-## Find places around bus stops
+## Returns list of notable places around bus stops
 
 `POST /AroundBusStops_v2`
 
@@ -1225,7 +1226,7 @@ Base URLs:
 }
 ```
 
-<h3 id="find-places-around-bus-stops-parameters">Parameters</h3>
+<h3 id="returns-list-of-notable-places-around-bus-stops-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
