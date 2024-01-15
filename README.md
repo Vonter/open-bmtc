@@ -17,3 +17,4 @@ Data scraped from the API is available on the [bmtc-gtfs](https://github.com/Von
 ## To-Do
 
 - [ ] Document missing APIs
+- [ ] Document typical flows with example requests and responses

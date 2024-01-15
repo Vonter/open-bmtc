@@ -7,11 +7,35 @@ info:
     name: open-bmtc
     url: https://github.com/Vonter/open-bmtc
   description: |
-    Welcome to the Unofficial Namma BMTC OpenAPI specification. These APIs
-    can be used to fetch static data about BMTC services, and live track buses operated
-    by BMTC.
 
-    Use these APIs at your own risk. Static data and live tracking data may not reflect actual operations.
+    ## Welcome to the Unofficial Namma BMTC OpenAPI specification!
+
+    These APIs can be used to fetch static data about BMTC services, and live track buses operated by BMTC.
+
+    **Use these APIs at your own risk. Static data and live tracking data may not reflect actual operations.**
+
+    ### Static Data
+    
+    Typical flow for fetching static data:
+      1. `/GetAllRouteList` to get all the routes with their:
+      - Route: `routeid`, `routeno`, `routename` (Note: Each direction of a route has a separate `routeid`)
+      - Origin: `fromstation`, `fromstationid`
+      - Destination: `tostation`, `tostationid`
+      2. `/SearchRoute_v2` to get the `routeparentid` for the route, using the `routeno`
+      3. `/GetTimetableByRouteid_v3` to get the *timetable*, using the `routeid`
+      4. `/SearchByRouteDetails_v4` to get the list of *stops*, using the `routeparentid`
+      5. `/GetFareRoutes` to get the source and destination station codes, using the `fromStationId` and `toStationId`
+      6. `/GetMobileFareData_v2` to get the *fare*, using the station codes, `routeid` and `routeno`
+
+    ### Live Tracking
+
+    Typical flow for live tracking:
+      1. `/SearchByRouteDetails_v4` to live track a route, using the `routeparentid`
+      2. `/VehicleTripDetails_v2` to live track a vehicle, using the `vehicleId`
+      3. `/TripPlannerMSMD` to plan a trip based on vehicles currently plying, given a `fromStationId` and `toStationId`
+
+    More details about all the APIs, including the above mentioned APIs, can be found below. 
+
 servers:
 - description: Namma BMTC backend API server
   url: https://bmtcmobileapistaging.amnex.com/WebAPI
@@ -12513,7 +12537,7 @@ paths:
       tags:
       - route
       description: |
-        List all stops, and live track vehicles plying on a route (`routeid`) **(Live)**
+        List all stops, and live track vehicles plying on a route (`routeid` parameter expects the `routeparentid` of the route) **(Live)**
       requestBody:
         content:
           application/json:
@@ -27718,6 +27742,8 @@ paths:
       - route
       description: |
         Find bus routes whose name has `routetext` as a substring. `routetext` needs to be at least 3 characters **(Static)**
+
+        Can be used to get the `routeparentid`
       requestBody:
         content:
           application/json:
