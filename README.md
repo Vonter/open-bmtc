@@ -1,58 +1,19 @@
 # open-bmtc
 
-Data and analysis around public transit in Bengaluru.
+Unoffical Namma BMTC API documentation
 
-## API
+## APIs
 
-Nimmbus API documentation, as inferred by reverse-engineering the application, is available under the [/api folder](/api).
+The API documentation is available as an [OpenAPI 3.1 specification](/api/bmtc.yaml) and is viewable with a [Swagger UI](https://nimmbus.netlify.app).
 
-The API documentation is available as an [OpenAPI 3.0 specification](/api/nimmbus.yaml), with a [Swagger UI](https://nimmbus.netlify.app). The [README.md](/api/README.md) is generated from the OpenAPI specification using [widdershins](https://github.com/Mermade/widdershins) with the following options:
+### Missing APIs
 
-```sh
-widdershins --search false --omitHeader -u .widdershins/templates --code --summary nimmbus.yaml -o README.md
-```
-
-The list of API endpoints (includes undocumented APIs) accessed by the Nimmbus app is available in [/api/urls.txt](/api/urls.txt)
-
-### API Changes
-
-#### February
-
-* New
-  - `https://bmtcmobileapistaging.amnex.com/WebAPI/GetTUMMOCSecretKey`
-
-* Removed
-  - `https://bmtcmobileapistaging.amnex.com/WebAPI/SearchRouteandDestination`
-
-* Changed
-  - `https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData` &rarr; `https://bmtcmobileapistaging.amnex.com/WebAPI/GetMobileFareData_v1`
+APIs that are not yet documented, or missing in the OpenAPI specification, are listed in [missing.md](/api/missing.md)
 
 ## Data
 
-Data scraped from the Nimmbus API is available under the [/data folder](/data)
-
-## Visualizations
-
-TODO
+Data scraped from the API is available on the [bmtc-gtfs](https://github.com/Vonter/bmtc-gtfs) repository in both raw JSON form and as GTFS.
 
 ## To-Do
 
-- [ ] Nimmbus API Documentation
-  - [X] Routes
-  - [X] Timetables
-  - [X] Stops
-  - [ ] Stops in Route
-  - [X] Live Tracking
-  - [ ] Other
-  - [X] Swagger UI
-- [ ] Scrape data
-  - [X] Route List
-  - [X] Route Polyline
-  - [ ] Route Stoplist
-  - [ ] Route Timetable
-  - [ ] Stop List
-- [ ] Consolidate, organize and clean scraped data
-- [ ] Visualizations and analysis like [geohacker's](https://github.com/geohacker/bmtc)
-- [ ] Convert to GTFS
-- [ ] Include old data from other sources (like [geohacker's](https://github.com/geohacker/bmtc)) under an `archives/` folder
-  - [ ] Convert old data to GTFS
+- [ ] Document missing APIs
