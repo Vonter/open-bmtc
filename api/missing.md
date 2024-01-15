@@ -2,12 +2,12 @@
 
 ## Stops
 
-- `/NearbyStations_v2` (Get stop by location)
-- `/SearchStation` (Get stop by name)
+- `/NearbyStations_v2` (Get stop by location - used in *Nearby Stops* feature)
+- `/SearchStation` (Get stop by name - similar to `/FindNearByBusStop_v2` API)
 
 ## Vehicles
 
-- `/GetNearbyVehicle` (Get vehicle by location)
+- `/GetNearbyVehicle` (Get vehicle by location - used in *Nearby Stops* feature)
 
 ## Feedback
 
